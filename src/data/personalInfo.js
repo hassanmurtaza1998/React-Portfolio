@@ -3,9 +3,10 @@ export const personalInfo = {
     firstName: "Hassan",
     lastName: "Murtaza",
     title: "Full Stack Developer | Backend-Focused",
-    tagline: "Full Stack Developer with a strong backend foundation (Node.js, Nest.js, Express, MongoDB, microservices) who has expanded into modern frontend development leveraging AI-assisted workflows to deliver production-ready React/Next.js applications. Experienced in end-to-end ownership: architecture, API design, cloud deployment (AWS, GCP, Azure), real-time systems, and payment integrations across healthtech, edtech, and e-commerce domains.",
+    tagline: "I have 2+ years of experience as a Full Stack Developer. My focus is on delivering high-quality solutions through clean and maintainable code. In my previous experience, I have worked with service-based companies.",
     availability: "Available for opportunities",
-    image: "/favicon.png",
+    // image: "/favicon.png",
+    image: "/HassanMurtaza02.png",
     resume: "/Hassan Murtaza (Full Stack Dev).pdf",
 
     contact: {
@@ -17,8 +18,8 @@ export const personalInfo = {
     },
 
     about: {
-        intro: "Full Stack Developer with a strong backend foundation in Node.js, Nest.js, Express, MongoDB, and microservices, expanded into modern frontend development using AI-assisted workflows to deliver production-ready React/Next.js applications.",
-        focus: "Experienced in end-to-end ownership — architecture, API design, cloud deployment (AWS, GCP, Azure), real-time systems, and payment integrations across healthtech, edtech, and e-commerce domains.",
+        intro: "I'm a Full Stack Developer with strong expertise in Node.js, Express.js, MongoDB, and React, building secure, scalable, and production-ready applications. I have experience across e-commerce, real estate, ERP, AI/EdTech, healthtech, and telecom domains, with a focus on system architecture, API development, microservices, cloud deployments (AWS/Azure), RBAC, real-time features, and third-party integrations, including payment gateways and OpenAI services.",
+        // focus: "My work spans e-commerce marketplaces (Bud Bazzar, Plainfield Lumber), luxury real estate (Brixone Spaces), ERP & operations platforms (Moshlay Printing), AI analytics and EdTech SaaS (Rankk, Winco AI), healthtech (Medaibility, Patterdale Peds), and telecom (BySim) owning architecture, API design, cloud deployment on AWS & Azure, real-time features, RBAC, and third-party integrations including payments and OpenAI.",
     },
 
     values: [
