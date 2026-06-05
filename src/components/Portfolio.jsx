@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Navigation from "./sections/Navigation";
 import Hero from "./sections/Hero";
 import About from "./sections/About";
+import TechnicalSkills from "./sections/TechnicalSkills";
 import Expertise from "./sections/Expertise";
 import Projects from "./sections/Projects";
 import Experience from "./sections/Experience";
@@ -18,7 +19,7 @@ const Portfolio = () => {
     };
 
     const handleScroll = () => {
-      const sections = ["hero", "about", "expertise", "projects", "experience"];
+      const sections = ["hero", "about", "skills", "expertise", "projects", "experience"];
       const current = sections.find((section) => {
         const element = document.getElementById(section);
         if (element) {
@@ -39,51 +40,20 @@ const Portfolio = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0a0f1e] text-white relative overflow-hidden">
-      {/* Professional Ambient Background */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div
-          className="absolute w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px] transition-all duration-1000"
-          style={{
-            top: `${mousePosition.y / 15 - 200}px`,
-            left: `${mousePosition.x / 15 - 200}px`,
-          }}
-        />
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-sky-500/10 rounded-full blur-[100px]" />
-        <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-blue-700/10 rounded-full blur-[100px]" />
-      </div>
 
-      {/* Navigation */}
-      <Navigation activeSection={activeSection} />
 
-      {/* Main Content */}
-      <div className="relative z-10">
+      <>
         <Hero />
         <About />
+        <TechnicalSkills />
         <Expertise />
         <Projects />
         <Experience />
         <Education />
         <Contact />
-      </div>
+      </>
 
-      <style>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        html {
-          scroll-behavior: smooth;
-        }
-      `}</style>
-    </div>
+    
   );
 };
 

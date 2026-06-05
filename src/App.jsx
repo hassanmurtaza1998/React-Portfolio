@@ -1,8 +1,8 @@
-import Portfolio from "./components/Portfolio";
+import AppLayout from "./layout/layout";
 import "./App.css";
 
 function App() {
-  return <Portfolio />;
+  return <AppLayout />;
 }
 
 export default App;

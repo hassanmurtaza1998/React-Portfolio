@@ -9,9 +9,9 @@ export const education = {
         },
         {
             id: 2,
-            name: "Master of Computer Science",
-            field: "Software Engineering",
-            period: "2022 – 2024",
+            name: "Faculty of Science & Engineering",
+            field: "Mathematics",
+            period: "2016 – 2018",
             icon: "🎓",
         },
     ],

@@ -8,7 +8,7 @@ const Experience = () => {
   const [selectedExperience, setSelectedExperience] = useState(0);
 
   return (
-    <section id="experience" className="py-32 px-6 bg-white/[0.02]">
+    <section id="experience" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-white/[0.02]">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           title="Professional"

@@ -6,12 +6,12 @@ import {
 
 const ExperienceDetail = ({ experience }) => {
   return (
-    <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 min-h-[600px]">
-      <div className="flex items-start justify-between mb-8">
+    <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-5 sm:p-8 min-h-0 lg:min-h-[500px]">
+      <div className="flex items-start justify-between mb-6 sm:mb-8">
         <div>
-          <h3 className="text-3xl font-bold mb-2">{experience.role}</h3>
-          <p className="text-xl text-sky-400 mb-2">{experience.company}</p>
-          <div className="flex flex-wrap items-center gap-4 text-gray-400">
+          <h3 className="text-2xl sm:text-3xl font-bold mb-2 text-white">{experience.role}</h3>
+          <p className="text-lg sm:text-xl text-sky-400 mb-2">{experience.company}</p>
+          <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-sm sm:text-base text-gray-400">
             <span className="flex items-center gap-2">
               📅 {experience.period}
             </span>
@@ -26,7 +26,7 @@ const ExperienceDetail = ({ experience }) => {
       </div>
 
       <div className="mb-8">
-        <h4 className="text-xl font-bold mb-4 flex items-center gap-2">
+        <h4 className="text-lg sm:text-xl font-bold mb-4 flex items-center gap-2 text-white">
           <TrophyOutlined className="text-sky-400" /> Key Achievements
         </h4>
         <ul className="space-y-4">
@@ -35,7 +35,7 @@ const ExperienceDetail = ({ experience }) => {
               <span className="text-sky-400 text-2xl mt-1">
                 <CheckCircleOutlined />
               </span>
-              <span className="text-lg text-gray-300 leading-relaxed">
+              <span className="text-base sm:text-lg text-gray-300 leading-relaxed">
                 {achievement}
               </span>
             </li>
@@ -44,7 +44,7 @@ const ExperienceDetail = ({ experience }) => {
       </div>
 
       <div>
-        <h4 className="text-xl font-bold mb-4 flex items-center gap-2">
+        <h4 className="text-lg sm:text-xl font-bold mb-4 flex items-center gap-2 text-white">
           <CodeOutlined className="text-sky-400" /> Technologies Used
         </h4>
         <div className="flex flex-wrap gap-3">

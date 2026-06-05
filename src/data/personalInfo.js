@@ -2,21 +2,23 @@ export const personalInfo = {
     name: "Hassan Murtaza",
     firstName: "Hassan",
     lastName: "Murtaza",
-    title: "MERN Stack Developer",
-    tagline: "Specializing in building scalable backend architectures, secure RESTful APIs, and high-performance full-stack applications that drive business growth.",
+    title: "Full Stack Developer | Backend-Focused",
+    tagline: "Full Stack Developer with a strong backend foundation (Node.js, Nest.js, Express, MongoDB, microservices) who has expanded into modern frontend development leveraging AI-assisted workflows to deliver production-ready React/Next.js applications. Experienced in end-to-end ownership: architecture, API design, cloud deployment (AWS, GCP, Azure), real-time systems, and payment integrations across healthtech, edtech, and e-commerce domains.",
     availability: "Available for opportunities",
-    image: "/src/assets/images/Hassan.png",
+    image: "/favicon.png",
+    resume: "/Hassan Murtaza (Full Stack Dev).pdf",
 
     contact: {
         email: "hassanmurtaza.dev@gmail.com",
-        phone: "+923090001571",
-        github: "https://github.com/HassanCodeSmith",
-        linkedin: "https://linkedin.com/in/hassan-backenddeveloper",
+        phone: "+92 309 0001571",
+        location: "Lahore, Pakistan",
+        github: "https://github.com/hassanmurtaza1998",
+        linkedin: "https://www.linkedin.com/in/hassan-murtaza-dev",
     },
 
     about: {
-        intro: "Passionate backend engineer with a proven track record of architecting and delivering enterprise-grade applications. I specialize in Node.js ecosystem and have extensive experience building secure, scalable systems that handle millions of requests.",
-        focus: "Currently focused on exploring blockchain technology, Rust programming, and advanced system optimization techniques to stay at the forefront of backend development.",
+        intro: "Full Stack Developer with a strong backend foundation in Node.js, Nest.js, Express, MongoDB, and microservices, expanded into modern frontend development using AI-assisted workflows to deliver production-ready React/Next.js applications.",
+        focus: "Experienced in end-to-end ownership — architecture, API design, cloud deployment (AWS, GCP, Azure), real-time systems, and payment integrations across healthtech, edtech, and e-commerce domains.",
     },
 
     values: [

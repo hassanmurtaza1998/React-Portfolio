@@ -21,7 +21,7 @@ const iconMap = {
 
 const Expertise = () => {
   return (
-    <section id="expertise" className="py-32 px-6 bg-white/[0.02]">
+    <section id="expertise" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-white/[0.02]">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           title="Core"
