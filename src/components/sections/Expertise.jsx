@@ -1,46 +1,20 @@
-import {
-  ApiOutlined,
-  ThunderboltOutlined,
-  DatabaseOutlined,
-  CloudOutlined,
-  SafetyOutlined,
-  RocketOutlined,
-} from "@ant-design/icons";
+import { HiOutlineBolt, HiOutlineCircleStack, HiOutlineCloud, HiOutlineLockClosed, HiOutlineRocketLaunch, HiOutlineServerStack } from "react-icons/hi2";
 import SectionHeader from "../ui/SectionHeader";
 import SkillCard from "../ui/SkillCard";
 import { expertise } from "../../data/expertise";
 
-const iconMap = {
-  ApiOutlined: <ApiOutlined />,
-  ThunderboltOutlined: <ThunderboltOutlined />,
-  DatabaseOutlined: <DatabaseOutlined />,
-  CloudOutlined: <CloudOutlined />,
-  SafetyOutlined: <SafetyOutlined />,
-  RocketOutlined: <RocketOutlined />,
-};
+const icons = [HiOutlineServerStack, HiOutlineBolt, HiOutlineCircleStack, HiOutlineCloud, HiOutlineLockClosed, HiOutlineRocketLaunch];
 
-const Expertise = () => {
-  return (
-    <section id="expertise" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-white/[0.02]">
-      <div className="max-w-6xl mx-auto">
-        <SectionHeader
-          title="Core"
-          highlight="Expertise"
-          description="Specialized skills and technologies I leverage to build exceptional solutions"
-        />
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {expertise.map((skill) => (
-            <SkillCard
-              key={skill.id}
-              skill={skill}
-              icon={iconMap[skill.iconName]}
-            />
-          ))}
-        </div>
+const Expertise = () => (
+  <section id="expertise" className="section-shell section-rule overflow-hidden">
+    <div className="absolute inset-x-0 top-1/2 -z-10 h-64 -translate-y-1/2 bg-blue-600/[0.04] blur-3xl" />
+    <div className="site-container">
+      <SectionHeader eyebrow="Core expertise" title="Architecture with" highlight="purpose." description="Deep backend thinking paired with the frontend and delivery skills needed to own a product end to end." />
+      <div className="grid gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
+        {expertise.map((skill, index) => <SkillCard key={skill.id} skill={skill} icon={icons[index]} index={index} />)}
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Expertise;

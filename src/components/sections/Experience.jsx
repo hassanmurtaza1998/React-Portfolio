@@ -2,38 +2,39 @@ import { useState } from "react";
 import SectionHeader from "../ui/SectionHeader";
 import ExperienceButton from "../ui/ExperienceButton";
 import ExperienceDetail from "../ui/ExperienceDetail";
+import Reveal from "../ui/Reveal";
 import { experiences } from "../../data/experiences";
 
 const Experience = () => {
   const [selectedExperience, setSelectedExperience] = useState(0);
 
-  return (
-    <section id="experience" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-white/[0.02]">
-      <div className="max-w-6xl mx-auto">
-        <SectionHeader
-          title="Professional"
-          highlight="Journey"
-          description="Click on each role to explore my career progression and achievements"
-        />
+  const handleTabKeyDown = (event, index) => {
+    const lastIndex = experiences.length - 1;
+    let nextIndex = index;
+    if (["ArrowDown", "ArrowRight"].includes(event.key)) nextIndex = index === lastIndex ? 0 : index + 1;
+    else if (["ArrowUp", "ArrowLeft"].includes(event.key)) nextIndex = index === 0 ? lastIndex : index - 1;
+    else if (event.key === "Home") nextIndex = 0;
+    else if (event.key === "End") nextIndex = lastIndex;
+    else return;
 
-        <div className="grid lg:grid-cols-12 gap-8">
-          {/* Timeline Selector */}
-          <div className="lg:col-span-4 space-y-4">
-            {experiences.map((exp, idx) => (
-              <ExperienceButton
-                key={exp.id}
-                experience={exp}
-                isActive={selectedExperience === idx}
-                onClick={() => setSelectedExperience(idx)}
-              />
+    event.preventDefault();
+    setSelectedExperience(nextIndex);
+    requestAnimationFrame(() => document.getElementById(`experience-tab-${experiences[nextIndex].id}`)?.focus());
+  };
+
+  return (
+    <section id="experience" className="section-shell section-rule">
+      <div className="site-container">
+        <SectionHeader eyebrow="Experience" title="A journey of growing" highlight="scope & ownership." description="From backend architecture to end-to-end product delivery, each role has expanded the systems and teams I can move forward." />
+        <Reveal className="grid gap-5 lg:grid-cols-[20rem_1fr] lg:gap-8">
+          <div className="relative space-y-3" role="tablist" aria-label="Professional experience">
+            <div className="absolute bottom-5 left-[1.4rem] top-5 -z-10 w-px bg-gradient-to-b from-cyan-300/30 to-transparent" />
+            {experiences.map((experience, index) => (
+              <ExperienceButton key={experience.id} experience={experience} index={index} isActive={selectedExperience === index} onClick={() => setSelectedExperience(index)} onKeyDown={(event) => handleTabKeyDown(event, index)} />
             ))}
           </div>
-
-          {/* Experience Details */}
-          <div className="lg:col-span-8">
-            <ExperienceDetail experience={experiences[selectedExperience]} />
-          </div>
-        </div>
+          <ExperienceDetail experience={experiences[selectedExperience]} />
+        </Reveal>
       </div>
     </section>
   );

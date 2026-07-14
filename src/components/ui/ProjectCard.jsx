@@ -1,94 +1,39 @@
-import { CheckCircleOutlined } from "@ant-design/icons";
+import { HiArrowUpRight, HiOutlineCheckCircle } from "react-icons/hi2";
 import ProjectPreview from "./ProjectPreview";
+import Reveal from "./Reveal";
+import { externalLinkProps } from "../../utils/links";
 
-const ProjectCard = ({ project }) => {
-  const handleOpen = () => {
-    if (project.url) {
-      window.open(project.url, "_blank", "noopener,noreferrer");
-    }
-  };
+const ProjectCard = ({ project, index }) => (
+  <Reveal delay={Math.min(index * 30, 150)}>
+    <article className="glass-panel interactive-card group rounded-3xl p-5 sm:p-7 lg:p-8">
+      <div className="relative z-10 grid gap-7 lg:grid-cols-[1fr_18rem] lg:items-start">
+        <div>
+          <div className="mb-4 flex flex-wrap items-center gap-3">
+            <span className="font-mono text-xs text-cyan-300">0{index + 1}</span>
+            <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[11px] font-medium text-slate-400">{project.type}</span>
+          </div>
+          <h3 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">{project.name}</h3>
+          <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-400 sm:text-base">{project.description}</p>
 
-  const handleKeyDown = (event) => {
-    if (project.url && (event.key === "Enter" || event.key === " ")) {
-      event.preventDefault();
-      handleOpen();
-    }
-  };
+          <ul className="mt-6 grid gap-2 sm:grid-cols-2">
+            {project.highlights.map((highlight) => <li key={highlight} className="flex items-start gap-2.5 text-xs leading-5 text-slate-400"><HiOutlineCheckCircle className="mt-0.5 shrink-0 text-emerald-300" />{highlight}</li>)}
+          </ul>
 
-  return (
-    <div
-      onClick={handleOpen}
-      onKeyDown={handleKeyDown}
-      role={project.url ? "link" : undefined}
-      tabIndex={project.url ? 0 : undefined}
-      className="group block bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-5 sm:p-8 hover:border-sky-500/30 hover:shadow-2xl hover:shadow-sky-500/10 transition-all cursor-pointer"
-      aria-label={project.url ? `Open ${project.name}` : undefined}
-    >
-      <div className="flex flex-col sm:flex-row sm:items-start gap-5 sm:gap-6 mb-5 sm:mb-6">
-        <div className="flex-1 min-w-0 order-2 sm:order-1">
-          <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-sky-400 transition-colors mb-3">
-            {project.name}
-          </h3>
-
-          <span className="inline-flex items-center bg-sky-500/15 border border-sky-500/30 text-sky-300 px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium mb-4">
-            {project.type}
-          </span>
-
-          <p className="text-gray-400 leading-relaxed text-sm sm:text-base">
-            {project.description}
-          </p>
+          <div className="mt-6 flex flex-wrap gap-2">
+            {project.tech.map((tech) => <span key={tech} className="rounded-lg bg-white/[0.04] px-2.5 py-1.5 text-[11px] text-slate-500">{tech}</span>)}
+          </div>
         </div>
 
-        {project.url && (
-          <div className="shrink-0 order-1 sm:order-2 self-end sm:self-start">
-            <ProjectPreview
-              url={project.url}
-              name={project.name}
-              projectId={project.id}
-              previewImage={project.previewImage}
-            />
+        <div>
+          <ProjectPreview url={project.url} name={project.name} projectId={project.id} />
+          <div className="mt-3 grid grid-cols-3 gap-2">
+            {Object.entries(project.metrics).map(([key, value]) => <div key={key} className="rounded-xl border border-white/[0.07] bg-white/[0.025] p-2.5 text-center"><p className="truncate text-xs font-semibold text-white">{value}</p><p className="mt-1 truncate text-[9px] capitalize text-slate-600">{key}</p></div>)}
           </div>
-        )}
+          {project.url && <a href={project.url} {...externalLinkProps} className="mt-4 flex items-center justify-center gap-2 rounded-xl border border-white/10 py-2.5 text-xs font-semibold text-slate-300 transition hover:border-cyan-300/25 hover:text-cyan-200">Visit live project <HiArrowUpRight /></a>}
+        </div>
       </div>
-
-      <ul className="space-y-2.5 mb-5 sm:mb-6">
-        {project.highlights.map((highlight, i) => (
-          <li
-            key={i}
-            className="flex items-start gap-2.5 text-sm text-gray-300 leading-relaxed"
-          >
-            <CheckCircleOutlined className="text-green-400 mt-0.5 shrink-0 text-base" />
-            <span>{highlight}</span>
-          </li>
-        ))}
-      </ul>
-
-      <div className="flex flex-wrap gap-2 mb-5 sm:mb-6">
-        {project.tech.map((tech, i) => (
-          <span
-            key={i}
-            className="bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-xs sm:text-sm text-gray-300"
-          >
-            {tech}
-          </span>
-        ))}
-      </div>
-
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
-        {Object.entries(project.metrics).map(([key, value], i) => (
-          <div
-            key={i}
-            className="bg-white/5 border border-white/10 rounded-lg p-4 text-center"
-          >
-            <div className="text-lg sm:text-xl font-bold text-sky-400 mb-1">
-              {value}
-            </div>
-            <div className="text-xs text-gray-400 capitalize">{key}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
+    </article>
+  </Reveal>
+);
 
 export default ProjectCard;

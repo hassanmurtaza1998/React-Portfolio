@@ -1,43 +1,27 @@
+import { HiOutlineAcademicCap, HiOutlineCheckBadge } from "react-icons/hi2";
 import SectionHeader from "../ui/SectionHeader";
 import CertificationCard from "../ui/CertificationCard";
+import Reveal from "../ui/Reveal";
 import { education } from "../../data/education";
 
-const Education = () => {
-  return (
-    <section className="py-16 sm:py-24 md:py-32 px-4 sm:px-6">
-      <div className="max-w-6xl mx-auto">
-        <SectionHeader title="Education &" highlight="Certifications" />
-
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="space-y-4">
-            {education.degrees.map((degree) => (
-              <div
-                key={degree.id}
-                className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-5 sm:p-8"
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-2xl sm:text-3xl text-sky-400 shrink-0">
-                    {degree.icon}
-                  </span>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white">
-                    {degree.name}
-                  </h3>
-                </div>
-                <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-2">{degree.field}</p>
-                <p className="text-gray-400">{degree.period}</p>
-              </div>
-            ))}
+const Education = () => (
+  <section id="education" className="section-shell section-rule">
+    <div className="site-container">
+      <SectionHeader eyebrow="Learning" title="Foundations &" highlight="continuous growth." description="Formal education backed by focused certifications and a career-long habit of learning through building." />
+      <div className="grid gap-5 lg:grid-cols-2">
+        <Reveal className="glass-panel rounded-3xl p-6 sm:p-8">
+          <div className="mb-7 flex items-center gap-3"><span className="grid h-11 w-11 place-items-center rounded-2xl bg-cyan-300/10 text-xl text-cyan-200"><HiOutlineAcademicCap /></span><h3 className="text-xl font-semibold text-white">Education</h3></div>
+          <div className="space-y-3">
+            {education.degrees.map((degree) => <article key={degree.id} className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-5"><div className="flex justify-between gap-4"><div><h4 className="font-semibold text-white">{degree.name}</h4><p className="mt-2 text-sm text-slate-400">{degree.field}</p></div><span className="shrink-0 text-xs text-cyan-200">{degree.period}</span></div></article>)}
           </div>
-
-          <div className="space-y-4">
-            {education.certifications.map((cert) => (
-              <CertificationCard key={cert.id} certification={cert} />
-            ))}
-          </div>
-        </div>
+        </Reveal>
+        <Reveal delay={100} className="glass-panel rounded-3xl p-6 sm:p-8">
+          <div className="mb-7 flex items-center gap-3"><span className="grid h-11 w-11 place-items-center rounded-2xl bg-violet-300/10 text-xl text-violet-200"><HiOutlineCheckBadge /></span><h3 className="text-xl font-semibold text-white">Certifications</h3></div>
+          <div className="space-y-3">{education.certifications.map((certification, index) => <CertificationCard key={certification.id} certification={certification} index={index} />)}</div>
+        </Reveal>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Education;

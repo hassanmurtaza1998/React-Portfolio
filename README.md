@@ -1,16 +1,19 @@
-# React + Vite
+# Hassan Murtaza — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A production-ready, responsive portfolio built with React 19, Vite, and Tailwind CSS. The interface uses lightweight CSS depth effects and native browser APIs for motion, active navigation, and lazy reveals—without a heavy animation or WebGL runtime.
 
-Currently, two official plugins are available:
+## Development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+## Quality checks
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+```bash
+npm run lint
+npm run build
+```
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Portfolio content is maintained in `src/data`. Shared interface primitives live in `src/components/ui`, while complete page sections live in `src/components/sections`.

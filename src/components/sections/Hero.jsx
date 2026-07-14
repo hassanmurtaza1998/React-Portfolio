@@ -1,132 +1,71 @@
-import {
-  MailOutlined,
-  PhoneOutlined,
-  GithubOutlined,
-  LinkedinOutlined,
-  FileTextOutlined,
-} from "@ant-design/icons";
+import { FaGithub, FaLinkedinIn, FaNodeJs, FaReact } from "react-icons/fa6";
+import { SiMongodb } from "react-icons/si";
+import { HiArrowDown, HiArrowUpRight, HiOutlineDocumentText, HiOutlineEnvelope } from "react-icons/hi2";
 import { personalInfo } from "../../data/personalInfo";
-import { useContactModal } from "../../context/ContactModalContext";
+import { useContactModal } from "../../context/useContactModal";
 import { normalizeUrl, externalLinkProps } from "../../utils/links";
 
 const Hero = () => {
   const { openContactModal } = useContactModal();
 
   return (
-    <section
-      id="hero"
-      className="flex items-center py-5 sm:py-14 md:py-16 px-4 sm:px-6"
-    >
-      <div className="max-w-6xl mx-auto w-full">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center">
-          <div className="text-center md:text-left">
-            <div className="inline-block px-4 py-2 bg-sky-500/10 border border-sky-500/20 rounded-full mb-4 sm:mb-6">
-              <span className="text-sky-400 text-sm font-medium">
-                ● {personalInfo.availability}
-              </span>
-            </div>
-
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-3 sm:mb-4 leading-tight text-white">
-              {personalInfo.firstName}{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">
-                {personalInfo.lastName}
-              </span>
-            </h1>
-
-            <p className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-300 mb-3 sm:mb-4">
-              {personalInfo.title}
-            </p>
-
-            <p className="text-base sm:text-lg md:text-xl text-gray-400 mb-6 sm:mb-8 leading-relaxed max-w-xl mx-auto md:mx-0">
-              {personalInfo.tagline}
-            </p>
-
-            <div className="flex flex-wrap justify-center md:justify-start gap-3 sm:gap-4 mb-6 sm:mb-8">
-              <button
-                type="button"
-                onClick={openContactModal}
-                className="bg-gradient-to-r from-blue-600 to-sky-500 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-medium text-white hover:shadow-xl hover:shadow-sky-500/30 transition-all flex items-center gap-2"
-              >
-                <MailOutlined /> Get In Touch
-              </button>
-              <a
-                href={encodeURI(personalInfo.resume)}
-                {...externalLinkProps}
-                className="bg-white/5 border border-white/10 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-medium text-white hover:bg-white/10 hover:border-sky-500/30 transition-all flex items-center gap-2"
-              >
-                <FileTextOutlined /> View CV
-              </a>
-              <a
-                href={normalizeUrl(personalInfo.contact.github)}
-                {...externalLinkProps}
-                className="bg-white/5 border border-white/10 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-medium text-white hover:bg-white/10 transition-all flex items-center gap-2"
-              >
-                <GithubOutlined /> View Work
-              </a>
-            </div>
-
-            <div className="flex items-center justify-center md:justify-start gap-5 sm:gap-6 text-gray-400">
-              <a
-                href={normalizeUrl(personalInfo.contact.linkedin)}
-                {...externalLinkProps}
-                className="hover:text-sky-400 transition-colors"
-                aria-label="LinkedIn"
-              >
-                <LinkedinOutlined className="text-2xl" />
-              </a>
-              <a
-                href={normalizeUrl(personalInfo.contact.github)}
-                {...externalLinkProps}
-                className="hover:text-sky-400 transition-colors"
-                aria-label="GitHub"
-              >
-                <GithubOutlined className="text-2xl" />
-              </a>
-              <button
-                type="button"
-                onClick={openContactModal}
-                className="hover:text-sky-400 transition-colors"
-                aria-label="Email"
-              >
-                <MailOutlined className="text-2xl" />
-              </button>
-              <button
-                type="button"
-                onClick={openContactModal}
-                className="hover:text-sky-400 transition-colors"
-                aria-label="Phone"
-              >
-                <PhoneOutlined className="text-2xl" />
-              </button>
-            </div>
+    <section id="hero" className="relative flex min-h-screen items-center overflow-hidden pb-20 pt-28 sm:pt-32">
+      <div className="absolute left-[8%] top-32 h-36 w-36 rounded-full border border-blue-400/10 [transform:perspective(500px)_rotateX(68deg)]" aria-hidden="true" />
+      <div className="site-container relative z-10 grid items-center gap-14 lg:grid-cols-[1.18fr_.82fr] lg:gap-10">
+        <div className="text-center lg:text-left">
+          <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-emerald-300/15 bg-emerald-300/[0.06] px-3.5 py-2 text-xs font-semibold text-emerald-200">
+            <span className="relative flex h-2 w-2"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-300 opacity-60" /><span className="relative h-2 w-2 rounded-full bg-emerald-300" /></span>
+            {personalInfo.availability}
           </div>
 
-          <div className="w-full flex justify-center md:justify-end">
-            <div className="relative w-56 sm:w-64 md:w-72 lg:w-80">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-sky-500 to-purple-600 rounded-full blur-3xl opacity-30 animate-pulse" />
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-cyan-300">Full-stack engineer · Lahore, PK</p>
+          <h1 className="display-title mx-auto lg:mx-0">
+            Building the <span className="gradient-text">systems</span> behind ambitious products.
+          </h1>
+          <p className="mx-auto mt-7 max-w-2xl text-base leading-8 text-slate-400 sm:text-lg lg:mx-0">
+            I&apos;m {personalInfo.name}, a backend-focused full-stack developer crafting secure, scalable digital products—from architecture and APIs to polished React experiences.
+          </p>
 
-              <div className="relative p-1 bg-gradient-to-br from-sky-400 via-blue-500 to-purple-600 rounded-3xl shadow-2xl shadow-sky-500/50">
-                <div className="bg-gradient-to-br from-[#0a0f1e] to-[#1a1f2e] rounded-3xl p-2">
-                  <div className="relative group">
-                    <div className="absolute -inset-1 bg-gradient-to-r from-sky-400 to-blue-600 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
-                    <div className="relative">
-                      <img
-                        src={personalInfo.image}
-                        alt={personalInfo.name}
-                        className="relative w-full h-auto rounded-2xl shadow-2xl ring-2 ring-white/10 group-hover:ring-sky-400/50 transition-all duration-300"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    </div>
-                  </div>
+          <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row lg:justify-start">
+            <button type="button" onClick={openContactModal} className="group inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-6 py-3.5 font-bold text-slate-950 shadow-xl shadow-white/5 transition-transform hover:-translate-y-1">
+              Start a conversation <HiArrowUpRight className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </button>
+            <a href={encodeURI(personalInfo.resume)} {...externalLinkProps} className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/[0.04] px-6 py-3.5 font-semibold text-white transition hover:border-white/20 hover:bg-white/[0.07]">
+              <HiOutlineDocumentText /> View résumé
+            </a>
+          </div>
 
-                  <div className="absolute top-0 left-0 w-16 sm:w-20 h-16 sm:h-20 border-t-2 border-l-2 border-sky-400 rounded-tl-3xl"></div>
-                  <div className="absolute bottom-0 right-0 w-16 sm:w-20 h-16 sm:h-20 border-b-2 border-r-2 border-purple-500 rounded-br-3xl"></div>
-                </div>
+          <div className="mt-9 flex items-center justify-center gap-3 lg:justify-start">
+            <span className="mr-2 text-xs uppercase tracking-[0.18em] text-slate-600">Connect</span>
+            <a href={normalizeUrl(personalInfo.contact.github)} {...externalLinkProps} className="grid h-10 w-10 place-items-center rounded-xl border border-white/10 text-slate-400 transition hover:-translate-y-1 hover:border-cyan-300/30 hover:text-cyan-200" aria-label="GitHub profile"><FaGithub /></a>
+            <a href={normalizeUrl(personalInfo.contact.linkedin)} {...externalLinkProps} className="grid h-10 w-10 place-items-center rounded-xl border border-white/10 text-slate-400 transition hover:-translate-y-1 hover:border-cyan-300/30 hover:text-cyan-200" aria-label="LinkedIn profile"><FaLinkedinIn /></a>
+            <button type="button" onClick={openContactModal} className="grid h-10 w-10 place-items-center rounded-xl border border-white/10 text-slate-400 transition hover:-translate-y-1 hover:border-cyan-300/30 hover:text-cyan-200" aria-label="Open contact details"><HiOutlineEnvelope /></button>
+          </div>
+        </div>
+
+        <div className="relative mx-auto w-full max-w-[27rem] [perspective:1000px]">
+          <div className="absolute inset-8 rounded-full bg-gradient-to-br from-blue-500/25 to-violet-500/20 blur-3xl" aria-hidden="true" />
+          <div className="absolute -inset-10 animate-[slow-spin_28s_linear_infinite] rounded-full border border-dashed border-white/10" aria-hidden="true">
+            <span className="absolute left-5 top-16 grid h-12 w-12 place-items-center rounded-2xl border border-cyan-300/20 bg-[#09111f] text-xl text-cyan-300 shadow-xl"><FaReact /></span>
+            <span className="absolute bottom-8 right-10 grid h-12 w-12 place-items-center rounded-2xl border border-emerald-300/20 bg-[#09111f] text-xl text-emerald-300 shadow-xl"><FaNodeJs /></span>
+          </div>
+          <div className="relative rotate-2 rounded-[2rem] border border-white/15 bg-gradient-to-br from-white/10 to-white/[0.02] p-2 shadow-[0_40px_100px_rgba(0,0,0,.5)] transition-transform duration-500 hover:rotate-0 hover:[transform:rotateY(-3deg)_rotateX(2deg)]">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[1.55rem] bg-slate-900">
+              <img src={personalInfo.image} alt={`${personalInfo.name}, full-stack developer`} className="h-full w-full object-cover object-top" width="1023" height="1537" fetchPriority="high" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050914]/80 via-transparent to-transparent" />
+              <div className="absolute inset-x-5 bottom-5 flex items-center justify-between rounded-2xl border border-white/10 bg-black/30 p-4 backdrop-blur-lg">
+                <div><p className="text-sm font-bold text-white">{personalInfo.name}</p><p className="mt-1 text-xs text-slate-300">Full-stack developer</p></div>
+                <span className="grid h-10 w-10 place-items-center rounded-xl bg-white/10 text-xl text-emerald-300"><SiMongodb /></span>
               </div>
             </div>
           </div>
+          <div className="absolute -right-3 top-16 rounded-2xl border border-white/10 bg-[#0b1424]/90 px-4 py-3 shadow-2xl backdrop-blur-xl sm:-right-10">
+            <p className="text-xs text-slate-500">Currently building</p><p className="mt-1 text-sm font-semibold text-white">AI-powered products</p>
+          </div>
         </div>
       </div>
+
+      <a href="#about" className="absolute bottom-7 left-1/2 hidden -translate-x-1/2 items-center gap-2 text-xs uppercase tracking-[0.18em] text-slate-500 transition hover:text-white sm:flex">Scroll to explore <HiArrowDown className="animate-bounce" /></a>
     </section>
   );
 };

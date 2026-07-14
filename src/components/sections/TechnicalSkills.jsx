@@ -1,41 +1,35 @@
+import { HiOutlineCircleStack, HiOutlineCloud, HiOutlineCodeBracket, HiOutlineCpuChip, HiOutlinePaintBrush, HiOutlineWrenchScrewdriver } from "react-icons/hi2";
 import SectionHeader from "../ui/SectionHeader";
+import Reveal from "../ui/Reveal";
 import { technicalSkills } from "../../data/technicalSkills";
 
-const TechnicalSkills = () => {
-  return (
-    <section id="skills" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6">
-      <div className="max-w-6xl mx-auto">
-        <SectionHeader
-          title="Technical"
-          highlight="Skills"
-          description="Technologies and tools I use to build scalable, production-ready applications"
-        />
+const icons = [HiOutlineCodeBracket, HiOutlineCpuChip, HiOutlineCircleStack, HiOutlineCpuChip, HiOutlinePaintBrush, HiOutlineWrenchScrewdriver, HiOutlineCircleStack, HiOutlineCloud, HiOutlineWrenchScrewdriver];
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-          {technicalSkills.map((group) => (
-            <div
-              key={group.id}
-              className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-5 sm:p-6 hover:border-sky-500/30 hover:shadow-xl hover:shadow-sky-500/10 transition-all"
-            >
-              <h3 className="text-lg sm:text-xl font-bold mb-4 text-white">
-                {group.category}
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {group.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-xs sm:text-sm text-gray-300 hover:border-sky-500/30 hover:text-sky-300 transition-colors"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+const TechnicalSkills = () => (
+  <section id="skills" className="section-shell section-rule">
+    <div className="site-container">
+      <SectionHeader eyebrow="Technical toolkit" title="Built for the full" highlight="product lifecycle." description="A practical stack selected to ship fast, scale safely, and stay maintainable long after launch." />
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {technicalSkills.map((group, index) => {
+          const Icon = icons[index];
+          return (
+            <Reveal key={group.id} delay={(index % 3) * 70} className={`${index === 0 || index === 7 ? "lg:col-span-2" : ""}`}>
+              <article className="glass-panel interactive-card h-full rounded-3xl p-6">
+                <div className="relative z-10 mb-6 flex items-center justify-between">
+                  <span className="grid h-11 w-11 place-items-center rounded-2xl border border-white/10 bg-white/[0.05] text-xl text-cyan-200"><Icon /></span>
+                  <span className="font-mono text-xs text-slate-600">0{index + 1}</span>
+                </div>
+                <h3 className="relative z-10 text-lg font-semibold text-white">{group.category}</h3>
+                <div className="relative z-10 mt-4 flex flex-wrap gap-2">
+                  {group.skills.map((skill) => <span key={skill} className="rounded-lg border border-white/[0.07] bg-black/10 px-3 py-1.5 text-xs leading-5 text-slate-400 transition-colors hover:border-cyan-300/20 hover:text-cyan-100">{skill}</span>)}
+                </div>
+              </article>
+            </Reveal>
+          );
+        })}
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default TechnicalSkills;

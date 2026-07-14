@@ -1,26 +1,18 @@
-import { createContext, useContext, useState } from "react";
+import { useMemo, useState } from "react";
 import ContactModal from "../components/ui/ContactModal";
-
-const ContactModalContext = createContext(null);
+import { ContactModalContext } from "./modalContextBase";
 
 export const ContactModalProvider = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const openContactModal = () => setIsOpen(true);
-  const closeContactModal = () => setIsOpen(false);
+  const value = useMemo(() => ({
+    openContactModal: () => setIsOpen(true),
+    closeContactModal: () => setIsOpen(false),
+  }), []);
 
   return (
-    <ContactModalContext.Provider value={{ openContactModal, closeContactModal }}>
+    <ContactModalContext.Provider value={value}>
       {children}
-      <ContactModal isOpen={isOpen} onClose={closeContactModal} />
+      <ContactModal isOpen={isOpen} onClose={value.closeContactModal} />
     </ContactModalContext.Provider>
   );
-};
-
-export const useContactModal = () => {
-  const context = useContext(ContactModalContext);
-  if (!context) {
-    throw new Error("useContactModal must be used within ContactModalProvider");
-  }
-  return context;
 };

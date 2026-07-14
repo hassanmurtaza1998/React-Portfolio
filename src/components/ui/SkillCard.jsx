@@ -1,13 +1,17 @@
-const SkillCard = ({ skill, icon }) => {
-  return (
-    <div className="group bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-5 sm:p-8 hover:border-sky-500/30 hover:shadow-xl hover:shadow-sky-500/10 transition-all">
-      <div className="text-3xl sm:text-4xl text-sky-400 mb-4 group-hover:scale-110 transition-transform">
-        {icon}
+import { createElement } from "react";
+import Reveal from "./Reveal";
+
+const SkillCard = ({ skill, icon, index }) => (
+  <Reveal delay={(index % 3) * 70} className="h-full bg-[#080e1a]">
+    <article className="group h-full p-7 transition-colors hover:bg-white/[0.025] sm:p-8">
+      <div className="mb-10 flex items-center justify-between">
+        <span className="grid h-12 w-12 place-items-center rounded-2xl border border-cyan-300/15 bg-cyan-300/[0.07] text-xl text-cyan-200 transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110">{createElement(icon)}</span>
+        <span className="font-mono text-xs text-slate-700">0{index + 1}</span>
       </div>
-      <h3 className="text-lg sm:text-xl font-bold mb-2 text-white">{skill.name}</h3>
-      <p className="text-gray-400 text-sm">{skill.description}</p>
-    </div>
-  );
-};
+      <h3 className="text-xl font-semibold text-white">{skill.name}</h3>
+      <p className="mt-3 text-sm leading-7 text-slate-500">{skill.description}</p>
+    </article>
+  </Reveal>
+);
 
 export default SkillCard;

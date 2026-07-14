@@ -1,10 +1,8 @@
-const CertificationCard = ({ certification }) => {
-  return (
-    <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-6 hover:border-sky-500/30 transition-all">
-      <h4 className="font-bold text-base sm:text-lg mb-1 text-white">{certification.name}</h4>
-      <p className="text-gray-400 text-sm">{certification.org}</p>
-    </div>
-  );
-};
+const CertificationCard = ({ certification, index }) => (
+  <article className="group flex items-center gap-4 rounded-2xl border border-white/[0.07] bg-white/[0.025] p-5 transition-colors hover:border-violet-300/20">
+    <span className="font-mono text-xs text-violet-300/60">0{index + 1}</span>
+    <div><h4 className="font-semibold text-white">{certification.name}</h4><p className="mt-1.5 text-sm text-slate-500">{certification.org}</p></div>
+  </article>
+);
 
 export default CertificationCard;
